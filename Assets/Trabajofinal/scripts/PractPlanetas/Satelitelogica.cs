@@ -85,10 +85,10 @@ public class Satelitelogica : MonoBehaviour
         float moveForward = 0f;
         float moveRight = 0f;
 
-        if (Input.GetKey(KeyCode.W)) moveForward += 1f;
-        if (Input.GetKey(KeyCode.S)) moveForward -= 1f;
-        if (Input.GetKey(KeyCode.D)) moveRight += 1f;
-        if (Input.GetKey(KeyCode.A)) moveRight -= 1f;
+        if (Input.GetKey(KeyCode.D)) moveForward += 1f;
+        if (Input.GetKey(KeyCode.A)) moveForward -= 1f;
+        if (Input.GetKey(KeyCode.S)) moveRight += 1f;
+        if (Input.GetKey(KeyCode.W)) moveRight -= 1f;
 
         Vector3 up = transform.up;
 
