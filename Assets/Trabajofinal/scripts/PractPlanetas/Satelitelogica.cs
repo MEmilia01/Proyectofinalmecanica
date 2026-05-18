@@ -7,6 +7,7 @@ public class Satelitelogica : MonoBehaviour
     public float RotacionVelo = 5f;
     public float FuerzaSalto = 8f;
     public float ChecardistanciaSuelo = 1.1f;
+    public float Impulso = 2f;
 
     public LayerMask PlanetaSuelo;
 
@@ -104,6 +105,7 @@ public class Satelitelogica : MonoBehaviour
         Vector3 velocityChange = desiredVelocity - currentPlanarVelocity;
 
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        if (Input.GetKey(KeyCode.E)) rb.AddForce(Vector3.up * Impulso, ForceMode.Impulse);
     }
 
     private void Update()
