@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public class Satelitelogica : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class Satelitelogica : MonoBehaviour
     public float ChecardistanciaSuelo = 1.1f;
     public float Impulso = 2f;
 
+    private Vector3 lastMoveDir = Vector3.zero;
     public LayerMask PlanetaSuelo;
 
     [Header("Importante")]
@@ -37,6 +40,7 @@ public class Satelitelogica : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.R)) SceneManager.LoadScene("PlanetGame");
         if (planetas == null || planetas.Length == 0) return;
 
         //se mira que planeta es mas fuerte en rango
@@ -96,16 +100,25 @@ public class Satelitelogica : MonoBehaviour
         Vector3 forward = Vector3.ProjectOnPlane(transform.forward, up).normalized;
         Vector3 right = Vector3.ProjectOnPlane(transform.right, up).normalized;
 
-        Vector3 moveDir = (forward * moveForward + right * moveRight).normalized;
+        Vector3 moveDir = (forward * moveForward + right * moveRight);
 
-        if (moveDir.sqrMagnitude < 0.01f) return;
+        if (moveDir.sqrMagnitude > 0.01f)
+        {
+            moveDir = moveDir.normalized;
+            lastMoveDir = moveDir;
 
-        Vector3 desiredVelocity = moveDir * JugadorVelo;
-        Vector3 currentPlanarVelocity = Vector3.ProjectOnPlane(rb.linearVelocity, up);
-        Vector3 velocityChange = desiredVelocity - currentPlanarVelocity;
+            Vector3 desiredVelocity = moveDir * JugadorVelo;
+            Vector3 currentPlanarVelocity = Vector3.ProjectOnPlane(rb.linearVelocity, up);
+            Vector3 velocityChange = desiredVelocity - currentPlanarVelocity;
 
-        rb.AddForce(velocityChange, ForceMode.VelocityChange);
-        if (Input.GetKey(KeyCode.E)) rb.AddForce(Vector3.up * Impulso, ForceMode.Impulse);
+            rb.AddForce(velocityChange * 0.5f, ForceMode.VelocityChange);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            Vector3 impulsoDir = lastMoveDir.sqrMagnitude > 0.01f ? lastMoveDir : forward;
+            rb.AddForce(impulsoDir * Impulso, ForceMode.Impulse);
+        }
     }
 
     private void Update()
