@@ -19,8 +19,8 @@ public class Satelitelogica : MonoBehaviour
     Rigidbody rb;
     public Camera primerapov;
     public Camera tercerapov;
-    [SerializeField] private Mouse ratonPri;
-    [SerializeField] private Mouse ratonTer;
+    //[SerializeField] private Mouse ratonPri;
+    //[SerializeField] private Mouse ratonTer;
 
 
     public Planetaatributos[] planetas;
@@ -31,6 +31,7 @@ public class Satelitelogica : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
 
         primerapov.enabled = false;
         tercerapov.enabled = true;
@@ -125,15 +126,15 @@ public class Satelitelogica : MonoBehaviour
         }
     }
 
-    private void AttraccionMouse(Vector3 objetivoWorldPos, float fuerza)
-    {
-        Vector3 direccion = objetivoWorldPos - transform.position;
+    //private void AttraccionMouse(Vector3 objetivoWorldPos, float fuerza)
+    //{
+    //    Vector3 direccion = objetivoWorldPos - transform.position;
 
-        if (direccion.sqrMagnitude < 0.001f) return;
+    //    if (direccion.sqrMagnitude < 0.001f) return;
 
-        direccion.Normalize();
-        rb.AddForce(direccion * fuerza, ForceMode.VelocityChange);
-    }
+    //    direccion.Normalize();
+    //    rb.AddForce(direccion * fuerza, ForceMode.VelocityChange);
+    //}
 
     private void Update()
     {
@@ -155,26 +156,26 @@ public class Satelitelogica : MonoBehaviour
             tercerapov.enabled = true;
         }
 
-        if (Input.GetMouseButton(0))
-        {
-            if (ratonPri != null && ratonPri.Atraccionmouse)
-            {
-                AttraccionMouse(ratonPri.MousePosition, Fuerzatraccion);
-            }
-            else if (ratonTer != null && ratonTer.Atraccionmouse)
-            {
-                AttraccionMouse(ratonTer.MousePosition, Fuerzatraccion);
-            }
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    if (ratonPri != null && ratonPri.Atraccionmouse)
+        //    {
+        //        AttraccionMouse(ratonPri.MousePosition, Fuerzatraccion);
+        //    }
+        //    else if (ratonTer != null && ratonTer.Atraccionmouse)
+        //    {
+        //        AttraccionMouse(ratonTer.MousePosition, Fuerzatraccion);
+        //    }
+        //}
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            JugadorVelo = 0;
-        }
-        if (!Input.GetKeyUp(KeyCode.X))
-        {
-            JugadorVelo = 3;
-        }
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    JugadorVelo = 0;
+        //}
+        //if (!Input.GetKeyUp(KeyCode.X))
+        //{
+        //    JugadorVelo = 3;
+        //}
     }
 
     private void EstaenSuelo()
