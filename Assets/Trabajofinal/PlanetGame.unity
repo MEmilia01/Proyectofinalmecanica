@@ -623,6 +623,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -748,6 +749,20 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ced6fc0c07c45a4aab6972299cd2aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camposicion: {fileID: 330585545}
+  Atraccionmouse: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,6 +2568,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2039615569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8169814281666960071, guid: 5f970e8f0afc4db43b1e8b3a29dc6fa2, type: 3}
+  m_PrefabInstance: {fileID: 2002691415497199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2039615573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039615569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ced6fc0c07c45a4aab6972299cd2aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camposicion: {fileID: 817596955}
+  Atraccionmouse: 0
 --- !u!4 &2045833793 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2537865649027988683, guid: 246dbcf66a5b94b48b26e20776c85a16, type: 3}
@@ -2757,6 +2791,14 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3441101895132428711, guid: 5f970e8f0afc4db43b1e8b3a29dc6fa2, type: 3}
+      propertyPath: ratonPri
+      value: 
+      objectReference: {fileID: 2039615573}
+    - target: {fileID: 3441101895132428711, guid: 5f970e8f0afc4db43b1e8b3a29dc6fa2, type: 3}
+      propertyPath: ratonTer
+      value: 
+      objectReference: {fileID: 330585548}
+    - target: {fileID: 3441101895132428711, guid: 5f970e8f0afc4db43b1e8b3a29dc6fa2, type: 3}
       propertyPath: primerapov
       value: 
       objectReference: {fileID: 817596955}
@@ -2767,6 +2809,10 @@ PrefabInstance:
     - target: {fileID: 3441101895132428711, guid: 5f970e8f0afc4db43b1e8b3a29dc6fa2, type: 3}
       propertyPath: JugadorVelo
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441101895132428711, guid: 5f970e8f0afc4db43b1e8b3a29dc6fa2, type: 3}
+      propertyPath: Fuerzatraccion
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4529936034016007111, guid: 5f970e8f0afc4db43b1e8b3a29dc6fa2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2819,7 +2865,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8169814281666960071, guid: 5f970e8f0afc4db43b1e8b3a29dc6fa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2039615573}
   m_SourcePrefab: {fileID: 100100000, guid: 5f970e8f0afc4db43b1e8b3a29dc6fa2, type: 3}
 --- !u!1001 &4895458444414286958
 PrefabInstance:
